@@ -394,8 +394,54 @@ h2 {
     accent-color: var(--accent);
 }
 
-/* Responsive */
+/* Responsive / Smartphone Support */
 @media (max-width: 768px) {
-    .editor-grid { grid-template-columns: 1fr; }
-    .visualizer-section { height: 200px; }
+    body {
+        padding: 10px;
+    }
+    
+    .editor-grid { 
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+    }
+    
+    .visualizer-section { 
+        height: 180px; 
+    }
+
+    /* Make top controls more touch-friendly */
+    .controls {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .controls button, .controls select, .settings-group {
+        width: 100%;
+        justify-content: center;
+        padding: 14px;
+        box-sizing: border-box;
+    }
+
+    .settings-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    input[type="range"] {
+        width: 100%;
+    }
+
+    /* Enlarge touch targets for interactive items */
+    .phrase-card, .timeline-item {
+        padding: 24px 20px;
+        margin-bottom: 12px;
+    }
+
+    .add-btn, .remove-btn {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+    }
 }
