@@ -13,7 +13,8 @@ const state = {
     globalDuration: 10,
     isRepeat: false,
     mousePitch: 0, // Y ratio basically
-    mouseSpeed: 1  // X ratio basically
+    mouseSpeed: 1,  // X ratio basically
+    sortableInstance: null
 };
 
 // --- SVG Icons ---
@@ -271,7 +272,27 @@ function startVisualizer() {
 // --- UI Logic ---
 function initApp() {
     renderLibrary();
+    initSortableTimeline();
     bindEvents();
+}
+
+function initSortableTimeline() {
+    const container = document.getElementById('timelineContainer');
+    state.sortableInstance = new Sortable(container, {
+        animation: 250, // スムーズなアニメーション（ミリ秒）
+        delay: 200,     // モバイル用に長押しを必須にするディレイ
+        delayOnTouchOnly: true, // スマホのタッチ時のみ長押しを待機
+        touchStartThreshold: 5, // 誤作動防止するための余白
+        ghostClass: 'timeline-item-ghost',
+        onEnd: function (evt) {
+            // 見た目のDOMはSortableが並べ替えているので、データの配列を同期させる
+            if (evt.oldIndex !== evt.newIndex) {
+                const itemToMove = state.timeline.splice(evt.oldIndex, 1)[0];
+                state.timeline.splice(evt.newIndex, 0, itemToMove);
+                renderTimeline(); // インデックス番号の振り直しとアクティブハイライトの維持
+            }
+        }
+    });
 }
 
 function renderLibrary() {
@@ -338,7 +359,6 @@ function renderTimeline() {
     state.timeline.forEach((phrase, index) => {
         const item = document.createElement('div');
         item.className = `timeline-item ${index === state.currentChapterIndex ? 'playing' : ''}`;
-        item.draggable = true;
         item.dataset.index = index;
         
         item.innerHTML = `
@@ -364,55 +384,11 @@ function renderTimeline() {
             startPlayback(index);
         });
         
-        // Drag & Drop Event Listeners
-        item.addEventListener('dragstart', handleDragStart);
-        item.addEventListener('dragover', handleDragOver);
-        item.addEventListener('dragleave', handleDragLeave);
-        item.addEventListener('drop', handleDrop);
-        item.addEventListener('dragend', handleDragEnd);
-        
         container.appendChild(item);
     });
 }
 
-// --- Drag & Drop Logic ---
-let dragStartIndex;
-
-function handleDragStart(e) {
-    dragStartIndex = +this.dataset.index;
-    this.classList.add('dragging');
-    e.dataTransfer.effectAllowed = 'move';
-}
-
-function handleDragOver(e) {
-    e.preventDefault(); // allow drop
-    this.classList.add('drag-over');
-    e.dataTransfer.dropEffect = 'move';
-    return false;
-}
-
-function handleDragLeave(e) {
-    this.classList.remove('drag-over');
-}
-
-function handleDrop(e) {
-    e.stopPropagation();
-    this.classList.remove('drag-over');
-    
-    const dragEndIndex = +this.dataset.index;
-    
-    if (dragStartIndex !== dragEndIndex) {
-        // Switch arrangement in array
-        const itemToMove = state.timeline.splice(dragStartIndex, 1)[0];
-        state.timeline.splice(dragEndIndex, 0, itemToMove);
-        renderTimeline();
-    }
-    return false;
-}
-
-function handleDragEnd(e) {
-    this.classList.remove('dragging');
-}
+// Drag & Drop logic is completely handled by SortableJS internally now (see initSortableTimeline)
 
 // --- Sequencer ---
 
