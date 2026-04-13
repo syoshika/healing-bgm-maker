@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作説明 - Healing BGM Maker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .instruction-section {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .instruction-section h2 {
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .instruction-section p {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .instruction-section ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+        .instruction-section li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        .back-button-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .keyboard-key {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-family: monospace;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="aurora-bg"></div>
+    <div class="noise-overlay"></div>
+
+    <div class="app-container">
+        <header>
+            <h1>操作説明</h1>
+            <p>Healing BGM Maker の使い方</p>
+        </header>
+
+        <main>
+            <section class="glass-panel instruction-section">
+                <h2>🎶 フレーズライブラリ (Phrases Library)</h2>
+                <p>画面左側の「Phrases Library」には、神秘的なオーロラを感じさせる様々なアンビエント・サウンド（パッド、ベル、ドローン）が用意されています。</p>
+                <ul>
+                    <li><strong>プレビュー:</strong> サウンドのカード（四角い枠）そのものをクリック・タップすると、短いプレビューサウンドが流れます。</li>
+                    <li><strong>追加:</strong> カード右側の <span class="keyboard-key">+</span> ボタンを押すと、画面右側の「Timeline（タイムライン）」にそのフレーズが追加されます。（再生中に押した場合は、現在再生中のフレーズの次に追加されます）</li>
+                </ul>
+            </section>
+
+            <section class="glass-panel instruction-section">
+                <h2>✨ Today's Feeling</h2>
+                <p>ライブラリ上部の <span class="highlight">✨ Today's Feeling</span> ボタンを押すと、ランダムに5〜10個のフレーズを選択して一連のタイムラインを自動生成し、ただちに再生を開始します。どんな雰囲気の曲になるかはお楽しみです。</p>
+            </section>
+
+            <section class="glass-panel instruction-section">
+                <h2>⏲ タイムラインと再生 (Timeline / Chapters)</h2>
+                <p>追加されたフレーズは右側のタイムラインに「章 (Chapter)」として並びます。</p>
+                <ul>
+                    <li><strong>並べ替え:</strong> スマートフォン・PCを問わず、フレーズを<strong>ドラッグ＆ドロップ</strong>（スマホの場合は長押ししてからスライド）することで、順番を自由に入れ替えることができます。</li>
+                    <li><strong>削除:</strong> 各項目の右側にある <span class="keyboard-key">×</span> ボタンを押すと、タイムラインから削除されます。</li>
+                    <li><strong>途中から再生:</strong> タイムライン内の任意のフレーズをクリックすると、そのフレーズから順番に再生を開始します。</li>
+                </ul>
+            </section>
+
+            <section class="glass-panel instruction-section">
+                <h2>⚙️ 再生設定 (Settings)</h2>
+                <p>タイムラインの上部・下部の設定項目で、再生に関する詳細を調整できます。</p>
+                <ul>
+                    <li><strong>Play / Stop / Clear:</strong> 全体の再生、停止、およびタイムラインの全消去ができます。</li>
+                    <li><strong>Length X s:</strong> 1つのフレーズ（章）ごとの再生時間を設定します。デフォルトは10秒ですが、最大30秒までスライダーで長くすることができます。</li>
+                    <li><strong>Repeat All:</strong> チェックを入れると、タイムラインが最後まで再生された後、一番最初に戻ってループし続けます。</li>
+                </ul>
+            </section>
+
+            <section class="glass-panel instruction-section">
+                <h2>🌌 オーロラ・イコライザー (Aurora Equalizer)</h2>
+                <p>画面上部のキャンバスでは、再生中のサウンドに合わせて美しいオーロラが揺らめきます。さらに、<strong>キャンバス上でマウス（または指）を動かす</strong>ことで、リアルタイムにサウンドを変化させることができます。</p>
+                <ul>
+                    <li><strong>左右に動かす (X軸):</strong> サウンドの揺らぎ（リズムや波打ちの速度）が変化します。右に行くほど速くなります。</li>
+                    <li><strong>上下に動かす (Y軸):</strong> 全体の音程（ピッチ）が変化します。上に動かすとピッチが上がり、下に動かすと下がります。</li>
+                </ul>
+                <p>※ マウスをキャンバスから離すと、自動的にもとのサウンドにゆっくり戻ります。</p>
+            </section>
+
+            <div class="back-button-container">
+                <a href="index.html" class="btn primary" style="text-decoration: none; display: inline-block; padding: 1rem 2rem; font-size: 1.1rem;">アプリに戻る</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
