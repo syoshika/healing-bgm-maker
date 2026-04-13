@@ -163,6 +163,11 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* Prevent text selection and context menu on mobile to enable drag&drop */
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
 }
 
 .phrase-card:hover {
@@ -283,6 +288,11 @@ h2 {
     animation: fadeIn 0.4s ease;
     cursor: grab;
     transition: transform 0.2s, opacity 0.2s;
+    /* Prevent text selection and context menu on mobile to enable drag&drop */
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
 }
 
 .timeline-item:active {
