@@ -13,6 +13,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    /* Webアプリとしての挙動を強制（テキスト選択・長押しメニュー・タップ時の青い半透明ハイライトを全域で禁止） */
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
