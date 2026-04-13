@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healing BGM Maker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="aurora-bg"></div>
+    <div class="noise-overlay"></div>
+
+    <div class="app-container">
+        <header>
+            <h1>Healing BGM Maker</h1>
+            <p>アンビエント・シンセサイザーの調べ</p>
+        </header>
+
+        <main>
+            <section class="visualizer-section glass-panel">
+                <canvas id="visualizerCanvas"></canvas>
+                <div class="visualizer-overlay-text">AURORA EQUALIZER</div>
+            </section>
+
+            <div class="editor-grid">
+                <section class="library-section glass-panel">
+                    <h2>Phrases Library</h2>
+                    <p class="section-desc">追加したいサウンドをクリックしてください</p>
+                    <button id="todaysFeelingBtn" class="btn primary" style="width: 100%; margin-bottom: 1rem; background: linear-gradient(45deg, #b4f8ff, #e0b4ff); color: var(--bg-dark); font-weight: 600;">✨ Today's Feeling</button>
+                    <div id="phrasesList" class="phrases-list">
+                        <!-- JSで動的に追加されます -->
+                    </div>
+                </section>
+
+                <section class="timeline-section glass-panel">
+                    <div class="timeline-header">
+                        <h2>Timeline / Chapters</h2>
+                        <div class="playback-controls">
+                            <button id="playBtn" class="btn primary">Play</button>
+                            <button id="stopBtn" class="btn secondary">Stop</button>
+                            <button id="clearBtn" class="btn danger">Clear</button>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-settings">
+                        <div class="setting-item">
+                            <label>Length: <span id="durationVal">10s</span></label>
+                            <input type="range" id="durationSlider" min="10" max="30" step="10" value="10">
+                        </div>
+                        <div class="setting-item">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="repeatToggle">
+                                <span class="toggle-text">Repeat All</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="timelineContainer" class="timeline-container">
+                        <div class="timeline-empty-msg">左のライブラリからフレーズを追加してください</div>
+                        <!-- JSで章（Chapter）が追加されます -->
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
