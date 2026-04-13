@@ -11,7 +11,7 @@ const state = {
     rhythmTimer: null,
     visualizerActive: false,
     globalDuration: 10,
-    isRepeat: false,
+    isRepeat: true,
     mousePitch: 0, // Y ratio basically
     mouseSpeed: 1,  // X ratio basically
     sortableInstance: null
